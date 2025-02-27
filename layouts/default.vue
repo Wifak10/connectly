@@ -1,6 +1,12 @@
 <template>
     <div>
-        <slot></slot>
+       <AppHeader/>
+
+       <UMain>
+        <slot/>
+       </UMain>
+
+      <AppFooter/>
     </div>
 </template>
 
