@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import AsideLinks from '@nuxt/ui-pro/components/aside/AsideLinks.vue';
+
 const items = [
   {
     label: 'Blog',
@@ -16,18 +18,28 @@ const items = [
     <template #left>
       <NuxtLink to="/">
         <img src="/assets/logo.png" alt="logo de connectly" class="w-auto h-6 shrink-8"/>
-        <!-- <UHeading>My Blog</UHeading> -->
       </NuxtLink>
     </template>
 
     <template #center>
-      <UNavigationLinks :links="items" /> 
-    </template> 
-    
+      <UHeaderLinks :links="items" />
 
-    <template #right> 
+       <UVisibility :visible="true" :breakpoint="'sm'">
+        <UHeaderLinks :links="items" />
+      </UVisibility>
+      
+
+    </template>
+
+    <template #right>
       <UButton label="Se connecter" variant="link" color="orange" to="/login" /> 
       <UColorModeButton /> 
+    </template>
+  </UHeader>
+
+  <UHeader>
+    <template #panel>
+      <UAsideLinks :links="items" />
     </template>
   </UHeader>
 </template>
