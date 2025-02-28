@@ -1,19 +1,25 @@
 <script setup lang="ts">
-const {data: homepage} = await useAsyncData(() => queryCollection('webpages').path('/').first())
+const {data:posts} = await useAsyncData('posts',()=> queryCollection('blog').all());
 
 </script>
 
-
 <template>
+    <!-- <div>
+         <p v-if="posts"> on a {{ posts?.length }} posts </p>
+    </div> -->
+    <UContainer>
+        <UBlogList>
+            <UBlogPost v-for="post in posts" 
+            :key="post.id" 
+            :title="post.title"
+            :description="post.description"
+            :image="post.image"
+            :auteurs="post.auteurs"
+            />
+        </UBlogList>
 
-<div>Page Blog</div>
-<div>
-    <ContentRenderer v-if="homepage" :value="homepage" />
-</div>
+    </UContainer>
+
 </template>
 
-
-<style scoped>
-
-
-</style>
+<style scoped></style>
