@@ -19,6 +19,10 @@ export default defineContentConfig({
                         }),
                     }),
                 ),
+                date: z.string(),
+                badge: z.object({
+                    label: z.string(),
+                })
            })
        })
    }
