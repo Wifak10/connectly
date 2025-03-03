@@ -1,13 +1,15 @@
 <template>
-    <div>
-       <AppHeader/>
-
-       <UMain>
-        <slot/>
-       </UMain>
-
+  <div>
+    <header>
+      <AppHeader/>
+    </header>
+    <UMain>
+      <slot />
+    </UMain>
+    <footer>
       <AppFooter/>
-    </div>
+    </footer>
+  </div>
 </template>
 
 <script lang="ts" setup>

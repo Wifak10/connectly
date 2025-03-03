@@ -1,6 +1,5 @@
 <script setup lang="ts">
-
-const columns = [
+const links = [
   {
     label: 'Ressources',
     children: [
@@ -36,39 +35,42 @@ const columns = [
   }
 ];
 </script>
+
 <template>
-  <UFooter>
-    <template #top>
-      <UContainer>
-          <UFooterColumns :colums="columns">
-          <template #right>
-            <form>
-              <UFormField name="email" label="S'inscrire à notre newsletter" size="lg">
-                <UInput type="email" placeholder="Votre adresse email" required>
-                  <template #trauling>
-                    <UButton type="submit" color="orange" size="xs" icon="mail" label="S'inscrire"/>
-                  </template>
-                </UInput>
-              </UFormField>
-            </form>
-          </template>
-        </UFooterColumns>
-      </UContainer>
-    </template>
-
-    <template #left>
-      <p class="text-sm">
-        Copyright &copy; 2021 Connectly; {{ new Date().getFullYear()}}. Tous droits réservés
-      </p>
-    </template>
-
-    <template #right>
-      <UFooterSocialLinks />
-    </template>
-
-    <template #center>
-      <Ubutton to="https://github.com/Wifak10?tab=repositories  " target="_blank" icon="devicon:githubcodespaces" ></Ubutton>
-    </template>
-  </UFooter>
+ <UFooter>
+  <template #top>
+    <UContainer>
+      <UFooterColumns :links="links">
+        <template #right>
+          <form>
+            <Uformfield name="email" label="S'inscrire à notre newsleter" size="lg"> 
+              <UInput type="email" class="w-full" placeholder="Entrez votre email">
+              <template #trailing>
+                <UButton
+                type="submit"
+                size="xs"
+                color="orange"
+                label="S'inscrire"
+                />
+              </template>
+            </UInput>
+            </Uformfield>
+          </form> 
+        </template>
+      </UFooterColumns>
+    </UContainer>
+  </template>
+  <template #left>
+    <p class="test-sm">
+      Copyright &copy; {{ new Date().getFullYear() }}. Tous droits résrvés
+    </p>
+  </template>
+  <template #center>
+    <UButton  to="https://github.com/Wifak10?tab=repositories " target="_blank" icon="devicon:githubcodespaces"/>
+  </template> 
+</UFooter>
 </template>
-<style scoped></style>
+
+<style scoped>
+
+</style>

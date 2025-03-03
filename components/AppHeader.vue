@@ -1,47 +1,53 @@
 <script setup lang="ts">
-import AsideLinks from '@nuxt/ui-pro/components/aside/AsideLinks.vue';
+import {useBreakpoints } from '@vueuse/core'
 
-const items = [
+//On use les breakpoints pour définir les tailles de l'écran possible
+const breakpoints = useBreakpoints({
+  mobile: 0, // optional
+  tablet: 640,
+  laptop: 1024,
+  desktop: 1280,
+  lg: 100000,
+})
+ 
+//Vérifier si la taille de l'écran actuelle est parmi les tailles renseigné
+const laptop = breakpoints.between('laptop', 'lg')
+
+const links = [
   {
-    label: 'Blog',
+    label:'Blog',
     to:'/blog',
   },
   {
-    label: 'A propos',
+    label:'A propos',
     to:'/about',
-  },
-]
+  }
+];
 </script>
 
 <template>
   <UHeader>
     <template #left>
       <NuxtLink to="/">
-        <img src="/assets/logo.png" alt="logo de connectly" class="w-auto h-6 shrink-8"/>
+        <img src="/logo.png" alt="Logo de Connectly" class="w-auto h-6 shrink-0">
       </NuxtLink>
     </template>
 
-    <template #center>
-      <UHeaderLinks :links="items" />
-
-       <UVisibility :visible="true" :breakpoint="'sm'">
-        <UHeaderLinks :links="items" />
-      </UVisibility>
-      
-
+    <template #center v-if="laptop">
+      <UHeaderLinks  :links="links" />
     </template>
-
+    
     <template #right>
-      <UButton label="Se connecter" variant="link" color="orange" to="/login" /> 
-      <UColorModeButton /> 
+      <UButton label="Se connecter" variant="solid" color="orange"/>
+      <UColorModeButton/>
     </template>
-  </UHeader>
 
-  <UHeader>
     <template #panel>
-      <UAsideLinks :links="items" />
+      <UHeaderPopoverLinks :links="links" />
     </template>
   </UHeader>
 </template>
 
-<style scoped></style>
+<style scoped>
+
+</style>
